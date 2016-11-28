@@ -2,7 +2,7 @@ namespace messages;
 
 table Communication {
 	message: string;
-	id: ulong;
+	number: ulong;
 }
 
 root_type Communication;

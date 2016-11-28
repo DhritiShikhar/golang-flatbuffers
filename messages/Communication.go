@@ -30,7 +30,7 @@ func (rcv *Communication) Message() []byte {
 	return nil
 }
 
-func (rcv *Communication) Id() uint64 {
+func (rcv *Communication) Number() uint64 {
 	o := flatbuffers.UOffsetT(rcv._tab.Offset(6))
 	if o != 0 {
 		return rcv._tab.GetUint64(o + rcv._tab.Pos)
@@ -38,7 +38,7 @@ func (rcv *Communication) Id() uint64 {
 	return 0
 }
 
-func (rcv *Communication) MutateId(n uint64) bool {
+func (rcv *Communication) MutateNumber(n uint64) bool {
 	return rcv._tab.MutateUint64Slot(6, n)
 }
 
@@ -48,8 +48,8 @@ func CommunicationStart(builder *flatbuffers.Builder) {
 func CommunicationAddMessage(builder *flatbuffers.Builder, message flatbuffers.UOffsetT) {
 	builder.PrependUOffsetTSlot(0, flatbuffers.UOffsetT(message), 0)
 }
-func CommunicationAddId(builder *flatbuffers.Builder, id uint64) {
-	builder.PrependUint64Slot(1, id, 0)
+func CommunicationAddNumber(builder *flatbuffers.Builder, number uint64) {
+	builder.PrependUint64Slot(1, number, 0)
 }
 func CommunicationEnd(builder *flatbuffers.Builder) flatbuffers.UOffsetT {
 	return builder.EndObject()
